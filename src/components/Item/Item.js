@@ -1,19 +1,21 @@
-import { Card, Col } from 'react-bootstrap'
+import { Card, Col, Container } from 'react-bootstrap'
 
-const Item = ({title, category, price, img}) => {
+const Item = ({product}) => {
 
     return (
         <Col>
-            <Card border="secondary" style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={img} />
-                <Card.Body>
-                    <Card.Title>{title}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">{category}</Card.Subtitle>
-                    <Card.Text>
-                        $ {price}
-                    </Card.Text>
-                </Card.Body>
-            </Card>
+            <Container>
+                <Card border="secondary" style={{ width: '18rem' }}>
+                    <Card.Img variant="top" src={product.img} />
+                    <Card.Body>
+                        <Card.Title>{product.name}</Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">{product.category}</Card.Subtitle>
+                        <Card.Text>
+                            $ {product.price}
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+            </Container>
         </Col>
     )
 }
