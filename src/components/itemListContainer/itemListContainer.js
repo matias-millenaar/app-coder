@@ -1,33 +1,22 @@
 import { useState, useEffect } from "react";
-import {getProducts} from "../../asyncMock.js";
-import ItemCount from "../ItemCount/ItemCount.js"
+import { getProducts } from "../../asyncMock.js";
 import ItemList from "../ItemList/ItemList.js";
+import {  useParams } from "react-router-dom"
 
-const  ItemListContainer = ({greetings}) => {
-
+const  ItemListContainer = () => {
     const[products, setProducts] = useState([])
-    
+    const {categoryId} = useParams()
+
     useEffect(() => {
-        getProducts().then(products => {
+        getProducts(categoryId).then(products => {
             setProducts(products)
+        }).catch( err => {
+            console.log(err);
         })
-    }, [])
-
-
-    function handleOnAdd(count) {
-        if (count > 1) {
-            console.log(`${count} items added to cart`)
-        } else {
-            console.log(`${count} item added to cart`);
-        }   
-    }
+    }, [categoryId])
 
     return (
-        <>
-            <h1> {greetings} </h1>
-            <ItemCount stock={10} initial={1} onAdd={handleOnAdd}/>
-            <ItemList productsArray={products}/>
-        </>
+        <ItemList productsArray={products}/>
     )
 }
 

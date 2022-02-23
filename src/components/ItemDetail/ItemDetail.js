@@ -11,8 +11,9 @@ const ItemDetail = ({product}) => {
                 <Card.Body>
                     <Card.Title>{product.name}</Card.Title>
                     <Card.Text>
-                        <p>{product.description}</p>
-                        <p>$ {product.price}</p>
+                        {product.description}
+                        <br/>
+                        $ {product.price}
                     </Card.Text>
                     <Button variant="primary">Agregar al carrito</Button>
                 </Card.Body>
