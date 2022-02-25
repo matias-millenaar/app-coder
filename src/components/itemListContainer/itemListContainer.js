@@ -11,7 +11,7 @@ const  ItemListContainer = () => {
         getProducts(categoryId).then(products => {
             setProducts(products)
         }).catch( err => {
-            console.log(err);
+            console.error(err);
         })
     }, [categoryId])
 

@@ -1,5 +1,6 @@
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
+import { Link } from "react-router-dom"
 
 
 const NavBar = () => {
@@ -19,9 +20,9 @@ const NavBar = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className='me-auto' activeKey={window.location.pathname}>
-                    <Nav.Link href="/category/plantines">Plantines</Nav.Link>
-                    <Nav.Link href="/category/macetas">Macetas</Nav.Link>
-                    <Nav.Link href="/category/insumos">Insumos</Nav.Link>
+                    <Link className='btn btn-dark' style={{marginLeft:"0.5vw"}} to="/category/plantines">Plantines</Link>
+                    <Link className='btn btn-dark' style={{marginLeft:"0.5vw"}} to="/category/macetas">Macetas</Link>
+                    <Link className='btn btn-dark' style={{marginLeft:"0.5vw"}} to="/category/insumos">Insumos</Link>
                 </Nav>
             </Navbar.Collapse>
             <Navbar.Brand href="#">

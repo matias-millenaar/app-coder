@@ -1,27 +1,27 @@
 import {useState} from 'react'
+import { Button, Badge } from 'react-bootstrap'
 
 const ItemCount = ({stock, initial, onAdd}) => {
-
-    const[count, setCount] = useState(initial)
+    const[quantity, setQuantity] = useState(initial)
 
     const decrement = () => {
-        if (count > 1) {
-            setCount(count - 1)
+        if (quantity > 1) {
+            setQuantity(quantity - 1)
         }
     }
     const increment = () => {
-        if (count < stock)
-            setCount(count + 1)
+        if (quantity < stock)
+            setQuantity(quantity + 1)
     }
 
     return (
         <>
-            <h3>Product</h3>
-            <h3>{count}</h3>
-            <button onClick={decrement}>-</button>
-            <button onClick={increment}>+</button>
+            <Badge pill size="xs" bg="dark"> {quantity} </Badge>
             <br/>
-            <button onClick={() => onAdd(count)}>Add to cart</button>
+            <Button variant="light" onClick={decrement}>-</Button>
+            <Button variant="light" onClick={increment}>+</Button>
+            <br/><br/>
+            <Button onClick={() => onAdd(quantity)}>Agregar al carrito</Button>
         </>
     )
 }
