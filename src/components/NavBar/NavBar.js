@@ -1,9 +1,11 @@
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
+//import Context from '../../CartContext/CartContext'
+//import { useContext } from 'react'
 import { Link } from "react-router-dom"
 
-
 const NavBar = () => {
+    //const {cart, setCart} = useContext(Context)
 
     return (
         <Navbar bg="dark" variant='dark' expand="lg">
