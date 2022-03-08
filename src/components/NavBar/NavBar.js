@@ -1,11 +1,9 @@
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-//import Context from '../../CartContext/CartContext'
-//import { useContext } from 'react'
 import { Link } from "react-router-dom"
+import CartWidget from '../CartWidget/CartWidget'
 
 const NavBar = () => {
-    //const {cart, setCart} = useContext(Context)
 
     return (
         <Navbar bg="dark" variant='dark' expand="lg">
@@ -27,15 +25,8 @@ const NavBar = () => {
                     <Link className='btn btn-dark' style={{marginLeft:"0.5vw"}} to="/category/insumos">Insumos</Link>
                 </Nav>
             </Navbar.Collapse>
-            <Navbar.Brand href="#">
-                <img
-                    src={'../images/cart_icon.png'}
-                    width="30"
-                    height="30"
-                    className="d-inline-block align-top"
-                    alt="Cart logo"
-                />
-                contador
+            <Navbar.Brand>
+                <CartWidget />
             </Navbar.Brand>
         </Navbar>
     )

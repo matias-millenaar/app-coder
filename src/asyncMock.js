@@ -10,7 +10,7 @@ export const getProducts = (category) => {
         const categoryProducts = products.filter (p => p.category.toLowerCase() === category)
         setTimeout(() => {
             resolve(category !== undefined ? categoryProducts : products)
-        }, 2000)
+        }, 1000)
     })
 }
 
@@ -19,6 +19,6 @@ export const getProduct = (id) => {
         const prod = products.find(p => p.id === parseInt(id))
         setTimeout(() => {
             resolve(prod)
-        }, 2000)
+        }, 1000)
     })
 }
