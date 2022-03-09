@@ -2,8 +2,11 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import { Link } from "react-router-dom"
 import CartWidget from '../CartWidget/CartWidget'
+import Context from '../../CartContext/CartContext'
+import { useContext } from 'react'
 
 const NavBar = () => {
+    const {cart} = useContext(Context)
 
     return (
         <Navbar bg="dark" variant='dark' expand="lg">
@@ -26,7 +29,7 @@ const NavBar = () => {
                 </Nav>
             </Navbar.Collapse>
             <Navbar.Brand>
-                <CartWidget />
+                {cart.length > 0 && <CartWidget />}
             </Navbar.Brand>
         </Navbar>
     )
