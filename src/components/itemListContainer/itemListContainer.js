@@ -1,31 +1,35 @@
 import { useState, useEffect } from "react";
 import ItemList from "../ItemList/ItemList.js";
 import {  useParams } from "react-router-dom"
-import { getDocs, collection, query, where } from "firebase/firestore"
-import { firestoreDb } from "../../services/firebase/firebase.js";
+import { getProducts } from "../../services/firebase/firebase.js";
 
-const  ItemListContainer = () => {
+const ItemListContainer = () => {
     const[products, setProducts] = useState([])
+    const [loading, setLoading] = useState(true)
     const {categoryId} = useParams()
 
     useEffect(() => {
+        setLoading(true)
 
-        const collectionRef = categoryId ? 
-            query(collection(firestoreDb, "products"), where("category", "==", categoryId)) :
-            collection(firestoreDb, "products")
-
-        getDocs(collectionRef).then(response => {
-            const products = response.docs.map(doc => {
-                return {id: doc.id, ...doc.data()}
-            })
-            setProducts(products)
-        }).catch( err => {
-            console.error(err);
+        getProducts(categoryId).then(response => {
+            setProducts(response)
+        }).catch(error => {
+            return error
+        }).finally(() => {
+            setLoading(false)
         })
     }, [categoryId])
 
     return (
-        <ItemList productsArray={products}/>
+        <>
+        {
+            loading ?
+                <h2>Cargando, por favor espere...</h2> :
+            products.length ?
+                <ItemList productsArray={products}/> :
+                <h2>No se encontraron productos</h2>
+        }
+        </>
     )
 }
 

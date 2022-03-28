@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 const CartWidget = () => {
-    const {getQuantity} = useContext(Context)
+    const {getTotalQuantity} = useContext(Context)
 
     return (
         <Link className='btn btn-dark' to="/cart">
@@ -14,7 +14,7 @@ const CartWidget = () => {
                 className="d-inline-block align-top"
                 alt="Cart logo"
             />
-            {getQuantity()}
+            {getTotalQuantity()}
         </Link>
     )
 }

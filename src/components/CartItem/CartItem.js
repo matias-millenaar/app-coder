@@ -18,10 +18,10 @@ const CartItem = ({product}) => {
                         <div className="ms-3">
                             <h5>{product.name}</h5>
                             <p className="small mb-0">{product.description}</p>
-                    </div>
+                        </div>
                     </div>
                     <div className="d-flex flex-row align-items-center">
-                    <div style={{width: "80px"}}>
+                        <div style={{width: "80px"}}>
                             <h6 className="mb-0">$ {product.price}</h6>
                         </div>
                         <div style={{width: "50px"}}>
@@ -30,7 +30,7 @@ const CartItem = ({product}) => {
                         <div style={{width: "80px"}}>
                             <h5 className="mb-0">$ {product.price * product.quantity}</h5>
                         </div>
-                        <Button onClick={() => removeItem(product.id)}>
+                        <Button onClick={() => removeItem(product.id, product.name)}>
                             Eliminar
                         </Button>
                     </div>

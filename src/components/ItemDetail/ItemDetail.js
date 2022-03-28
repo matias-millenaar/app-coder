@@ -5,12 +5,13 @@ import { useState, useContext } from "react"
 import { Link } from "react-router-dom"
 
 
+
 const ItemDetail = ({id, name, category, price, stock, img, img2, description}) => {
     const [quantity, setQuantity] = useState(0)
 
-    const {addItem} = useContext(Context)
+    const {addItem, getProductQuantity} = useContext(Context)
 
-    const handleOnAdd = (quantity) =>{
+    const handleOnAdd = (quantity) => {
         setQuantity(quantity)
 
         const productToAdd = {id, name, quantity, category, price, stock, img, img2, description}
@@ -39,7 +40,7 @@ const ItemDetail = ({id, name, category, price, stock, img, img2, description}) 
                             <br/><br/>
                             <Link to={"/cart"} className={"btn btn-success"}> Finalizar compra </Link> 
                         </>:
-                        <ItemCount initial={1} stock={stock} onAdd={handleOnAdd}/>}
+                        <ItemCount initial={getProductQuantity(id)} product={id} stock={stock} onAdd={handleOnAdd}/>}
                     </Card.Text>
                 </Card.Body>
             </Card>
