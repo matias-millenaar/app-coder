@@ -21,6 +21,7 @@ const Cart = () => {
         address: '',
         comments: ''
     })
+    JSON.parse(localStorage.getItem("cart"))
 
     const contactFormRef = useRef()
 

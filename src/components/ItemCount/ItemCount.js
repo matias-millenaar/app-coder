@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import { Button, Badge } from 'react-bootstrap'
 
 
@@ -11,8 +11,9 @@ const ItemCount = ({initial, stock, onAdd}) => {
         }
     }
     const increment = () => {
-        if (quantity < stock)
+        if (quantity < stock) {
             setQuantity(quantity + 1)
+        }
     }
 
     const add = () =>  {

@@ -4,7 +4,7 @@ import { useNotificationService } from "../services/notification/NotificationSer
 const Context = createContext()
 
 export const CartContextProvider = ({ children }) => {
-    const [cart, setCart] = useState([])
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")))
     const setNotification = useNotificationService()
     
     const addItem = (productToAdd, quantity) => {
@@ -12,42 +12,48 @@ export const CartContextProvider = ({ children }) => {
 
         if (quantity > 0) {
             if(isInCart(productToAdd.id)) {
-                const modifiedCart = cart.map(product => {
+                const newCart = cart.map(product => {
                     if (product.id === productToAdd.id) {
                         product.quantity = productToAdd.quantity
                     }
                     return product
                 })
-                setCart(modifiedCart)
+                setCart(newCart)
+                localStorage.setItem("cart", JSON.stringify(newCart))
             } else {
                 setCart([...cart, newObject])
+                localStorage.setItem("cart", JSON.stringify([...cart, newObject]))
             }
             setNotification(`success`, `Se agregó ${productToAdd.name} al carrito`)
         }
     }
 
     const isInCart = (id) => {
-        return cart.some(p => p.id === id)
+        return cart.some(product => product.id === id)
     }
 
     const removeItem = (id, name) => {
-        setCart(cart.filter(p => p.id !== id))
+        const newCart = cart.filter(product => product.id !== id)
+        setCart(newCart)
+        localStorage.setItem("cart", JSON.stringify(newCart))
         setNotification("danger", `${name} eliminado del carrito`);
     }
 
     const removeArray = (array) => {
-        const newCart = cart.filter(item => !array.find(p => p.id === item.id))
-        setCart(newCart);
+        const newCart = cart.filter(product => !array.find(item => item.id === product.id))
+        setCart(newCart)
+        localStorage.setItem("cart", JSON.stringify(newCart))
     }
 
     const clear = () => {
         setCart([])
+        localStorage.setItem("cart", JSON.stringify([]))
     }
 
     const getProductQuantity = (id) => {
         let initial = 0
         if(isInCart(id)) {
-            const product =cart.find(p => p.id === id)
+            const product =cart.find(product => product.id === id)
             return initial = product.quantity
         } else{
             return initial
@@ -55,16 +61,34 @@ export const CartContextProvider = ({ children }) => {
     }
 
     const getTotalQuantity = () => {
-        return cart.reduce((acc, product) => acc + product.quantity, 0)
+        let count = 0
+        cart.forEach(product => {
+            count = count + product.quantity
+        })
+        return count
     }
 
     const getTotalValue = () => {
-        return cart.reduce((acc, product) => acc + (product.quantity * product.price), 0)
+        let total = 0
+        cart.forEach(product => {
+            total = total + (product.quantity * product.price)
+        })
+        return total
     }
 
+
     return (
-        <Context.Provider value={{cart, addItem, removeItem, removeArray, clear, getProductQuantity, getTotalQuantity, getTotalValue}}>
-            {children}
+        <Context.Provider value={{
+            cart, 
+            addItem, 
+            removeItem, 
+            removeArray, 
+            clear, 
+            getProductQuantity, 
+            getTotalQuantity, 
+            getTotalValue, 
+            }}>
+                {children}
         </Context.Provider>
     )
 }

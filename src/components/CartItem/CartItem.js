@@ -22,6 +22,7 @@ const CartItem = ({product}) => {
                     </div>
                     <div className="d-flex flex-row align-items-center">
                         <div style={{width: "80px"}}>
+                            <p>Precio unitario:</p>
                             <h6 className="mb-0">$ {product.price}</h6>
                         </div>
                         <div style={{width: "50px"}}>

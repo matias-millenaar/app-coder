@@ -11,9 +11,13 @@ import { NotificationServiceProvider } from './services/notification/Notificatio
 
 function App() {
   useEffect(() => {
-    //localStorage.getItem(...)
+    //localStorage.getItem(...) ?????
   },[])
   
+  if (JSON.parse(localStorage.getItem("cart")) === null) {
+    localStorage.setItem("cart", JSON.stringify([]))
+  }
+
   return (
     <div className="App">
       <NotificationServiceProvider>
