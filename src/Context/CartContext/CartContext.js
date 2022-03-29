@@ -1,5 +1,5 @@
 import { createContext, useState } from "react"
-import { useNotificationService } from "../services/notification/NotificationService"
+import { useNotificationService } from "../../services/notification/NotificationService"
 
 const Context = createContext()
 

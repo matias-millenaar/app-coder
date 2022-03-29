@@ -1,6 +1,6 @@
 import { Card } from "react-bootstrap"
 import ItemCount from "../ItemCount/ItemCount.js"
-import Context from '../../CartContext/CartContext'
+import Context from "../../Context/CartContext/CartContext.js"
 import { useState, useContext } from "react"
 import { Link } from "react-router-dom"
 import { useNotificationService } from "../../services/notification/NotificationService.js"

@@ -51,15 +51,15 @@ export const pushOrder = (order, onSuccess, onError) => {
     const outOfStock = []
     let processedItems = 0
 
-    order.items.forEach(prod => {
-        getDoc(doc(firestoreDb, 'products', prod.id))
+    order.items.forEach(product => {
+        getDoc(doc(firestoreDb, 'products', product.id))
             .then(response => {
 
                 processedItems++
 
-                if(response.data().stock >= prod.quantity) {
+                if(response.data().stock >= product.quantity) {
                     batch.update(doc(firestoreDb, 'products', response.id), {
-                        stock: response.data().stock - prod.quantity
+                        stock: response.data().stock - product.quantity
                     })
                 } else {
                     outOfStock.push({ id: response.id, ...response.data()})

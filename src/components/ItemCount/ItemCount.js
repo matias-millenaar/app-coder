@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import { Button, Badge } from 'react-bootstrap'
-import Context from '../../CartContext/CartContext'
+import Context from '../../Context/CartContext/CartContext'
 
 
 const ItemCount = ({cart = false, initial, stock, onAdd, productId}) => {

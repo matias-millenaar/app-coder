@@ -1,7 +1,8 @@
 import { useContext, useRef, useState } from "react"
 import { Button, Card, Col, Container, Row } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import Context from "../../CartContext/CartContext"
+import Context from "../../Context/CartContext/CartContext"
+import FormContext from "../../Context/ContactFormContext/ContactFormContext"
 import CartItem from "../CartItem/CartItem"
 import Togglable from "../Togglable/Togglable"
 import ContactForm from "../ContactForm/ContactForm"
@@ -14,13 +15,7 @@ const Cart = () => {
     const [processingOrder, setProcessingOrder] = useState(false)
     const [orderId, setOrderId] = useState("")
     const setNotification = useNotificationService()
-    const [contact, setContact] = useState({
-        name: '',
-        email: '',
-        phone: '',
-        address: '',
-        comments: ''
-    })
+    const {contact, setContact, deleteFormValues} = useContext(FormContext)
     JSON.parse(localStorage.getItem("cart"))
 
     const contactFormRef = useRef()
@@ -46,11 +41,11 @@ const Cart = () => {
             }
 
             const onError = (array) => {
-                const names = []
+                const noStockNames = []
                 array.forEach(product => {
-                    names.push(product.name)
+                    noStockNames.push(product.name)
                 })
-                setNotification(`danger`, `Desafortunadamente ya no contamos con stock de ${names}`)
+                setNotification(`danger`, `Desafortunadamente ya no contamos con stock de ${noStockNames}`)
                 removeArray(array)
                 setProcessingOrder(false)
             }
@@ -98,6 +93,12 @@ const Cart = () => {
         return <h2>Su orden está siendo procesada, por favor aguarde...</h2>
     }
 
+    const handleDeleteClick = () => {
+        setContact({name: '', email: '', phone: '', address: '', comments: ''})
+        deleteFormValues()
+    }
+
+
     return (
         <section className="h-100 h-custom" style={{backgroundColor: "#eee"}}>
             <Container className="py-5 h-100">
@@ -121,7 +122,7 @@ const Cart = () => {
                                     : cart.length > 0 && 'Agregar contacto'
                                 } 
                                 ref={contactFormRef}>
-                        <ContactForm toggleVisibility={contactFormRef} setContact={setContact} />
+                        <ContactForm toggleVisibility={contactFormRef} />
                     </Togglable> 
                 </> :                
                 <Link className='btn btn-warning mb-4' to="/">HOME</Link>
@@ -135,7 +136,7 @@ const Cart = () => {
                         <h4>Teléfono: {contact.phone}</h4>
                         <h4>Dirección: {contact.address}</h4>
                         <h4>Comentarios: {contact.comments}</h4>
-                        <Button onClick={() => setContact({name: '', email: '', phone: '', address: '', comments: ''})} className='btn btn-danger'>
+                        <Button onClick={() => handleDeleteClick()} className='btn btn-danger'>
                             Borrar datos de contacto
                         </Button>
                     </div>    
