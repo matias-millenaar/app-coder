@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { Button, Card } from "react-bootstrap"
 import Context from "../../CartContext/CartContext"
+import ItemCount from "../ItemCount/ItemCount"
 
 const CartItem = ({product}) => {
     const {removeItem} = useContext(Context)
@@ -26,7 +27,13 @@ const CartItem = ({product}) => {
                             <h6 className="mb-0">$ {product.price}</h6>
                         </div>
                         <div style={{width: "50px"}}>
-                            <h5 className="fw-normal mb-0">{product.quantity}</h5>
+                            <ItemCount 
+                                cart = {true}
+                                stock = {product.stock}
+                                initial = {product.quantity}
+                                productId = {product.id}
+                            />
+                            {/* <h5 className="fw-normal mb-0">{product.quantity}</h5> */}
                         </div>
                         <div style={{width: "80px"}}>
                             <h5 className="mb-0">$ {product.price * product.quantity}</h5>

@@ -1,6 +1,5 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/itemListContainer/itemListContainer';
@@ -10,10 +9,7 @@ import { CartContextProvider } from './CartContext/CartContext';
 import { NotificationServiceProvider } from './services/notification/NotificationService';
 
 function App() {
-  useEffect(() => {
-    //localStorage.getItem(...) ?????
-  },[])
-  
+
   if (JSON.parse(localStorage.getItem("cart")) === null) {
     localStorage.setItem("cart", JSON.stringify([]))
   }

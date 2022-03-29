@@ -1,5 +1,4 @@
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
+import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from "react-router-dom"
 import CartWidget from '../CartWidget/CartWidget'
 import Context from '../../CartContext/CartContext'

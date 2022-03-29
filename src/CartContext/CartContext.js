@@ -6,6 +6,9 @@ const Context = createContext()
 export const CartContextProvider = ({ children }) => {
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")))
     const setNotification = useNotificationService()
+    const saveCart = (array) => {
+        localStorage.setItem("cart", JSON.stringify(array))
+    }
     
     const addItem = (productToAdd, quantity) => {
         const newObject = {...productToAdd, quantity}
@@ -19,10 +22,10 @@ export const CartContextProvider = ({ children }) => {
                     return product
                 })
                 setCart(newCart)
-                localStorage.setItem("cart", JSON.stringify(newCart))
+                saveCart(newCart)
             } else {
                 setCart([...cart, newObject])
-                localStorage.setItem("cart", JSON.stringify([...cart, newObject]))
+                saveCart([...cart, newObject])
             }
             setNotification(`success`, `Se agregó ${productToAdd.name} al carrito`)
         }
@@ -35,19 +38,19 @@ export const CartContextProvider = ({ children }) => {
     const removeItem = (id, name) => {
         const newCart = cart.filter(product => product.id !== id)
         setCart(newCart)
-        localStorage.setItem("cart", JSON.stringify(newCart))
+        saveCart(newCart)
         setNotification("danger", `${name} eliminado del carrito`);
     }
 
     const removeArray = (array) => {
         const newCart = cart.filter(product => !array.find(item => item.id === product.id))
         setCart(newCart)
-        localStorage.setItem("cart", JSON.stringify(newCart))
+        saveCart(newCart)
     }
 
     const clear = () => {
         setCart([])
-        localStorage.setItem("cart", JSON.stringify([]))
+        saveCart([])
     }
 
     const getProductQuantity = (id) => {
@@ -76,6 +79,28 @@ export const CartContextProvider = ({ children }) => {
         return total
     }
 
+    const incrementQuantity = (id) => {
+        const newCart = cart.map(product => {
+            if (product.id === id) {
+                product.quantity += 1
+            }
+            return product
+        })
+        setCart(newCart)
+        saveCart(newCart)
+    }
+
+    const decrementQuantity = (id) => {
+        const newCart = cart.map(product => {
+            if (product.id === id) {
+                product.quantity -= 1
+            }
+            return product
+        })
+        setCart(newCart)
+        saveCart(newCart)
+    }
+
 
     return (
         <Context.Provider value={{
@@ -86,7 +111,9 @@ export const CartContextProvider = ({ children }) => {
             clear, 
             getProductQuantity, 
             getTotalQuantity, 
-            getTotalValue, 
+            getTotalValue,
+            incrementQuantity,
+            decrementQuantity
             }}>
                 {children}
         </Context.Provider>
