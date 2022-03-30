@@ -54,7 +54,6 @@ export const pushOrder = (order, onSuccess, onError) => {
     order.items.forEach(product => {
         getDoc(doc(firestoreDb, 'products', product.id))
             .then(response => {
-
                 processedItems++
 
                 if(response.data().stock >= product.quantity) {
