@@ -20,7 +20,6 @@ function App() {
   return (
     <div className="App">
       <NotificationServiceProvider>
-        <FormContextProvider>
           <CartContextProvider>
             <BrowserRouter>
               <NavBar />
@@ -28,11 +27,14 @@ function App() {
                 <Route path='/' element={<ItemListContainer />} />
                 <Route path='/category/:categoryId' element={<ItemListContainer />} />
                 <Route path='item/:productId' element={<ItemDetailContainer />} />
-                <Route path='/cart' element={<Cart />} />
+                <Route path='/cart' element={
+                  <FormContextProvider>
+                    <Cart />
+                  </FormContextProvider>
+                } />
               </Routes>
             </BrowserRouter>
           </CartContextProvider>
-        </FormContextProvider>
       </NotificationServiceProvider>
     </div>
   );
