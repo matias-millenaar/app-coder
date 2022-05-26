@@ -1,11 +1,23 @@
 import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from "react-router-dom"
+import { getDocs, collection } from 'firebase/firestore'
+import { firestoreDb } from '../../services/firebase/firebase'
 import CartWidget from '../CartWidget/CartWidget'
 import Context from '../../Context/CartContext/CartContext'
-import { useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 
 const NavBar = () => {
+    const [categories, setCategories] = useState([])
     const {cart} = useContext(Context)
+
+    useEffect(() => {
+        getDocs(collection(firestoreDb, 'categories')).then(response => {
+            const categories = response.docs.map(cat => {
+                return { id: cat.id, ...cat.data()}
+            })
+            setCategories(categories)
+        })
+    }, [])
 
     return (
         <Navbar bg="dark" variant='dark' expand="lg">
@@ -22,9 +34,15 @@ const NavBar = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className='me-auto' activeKey={window.location.pathname}>
-                    <Link className='btn btn-dark' style={{marginLeft:"0.5vw"}} to="/category/plantines">Plantines</Link>
-                    <Link className='btn btn-dark' style={{marginLeft:"0.5vw"}} to="/category/macetas">Macetas</Link>
-                    <Link className='btn btn-dark' style={{marginLeft:"0.5vw"}} to="/category/insumos">Insumos</Link>
+                    {categories.map(cat => 
+                        <Link 
+                            className='btn btn-dark' 
+                            style={{marginLeft:"0.5vw"}} 
+                            key={cat.id}
+                            to={`/category/${cat.id}`}
+                        >
+                            {cat.description}
+                        </Link>)}
                 </Nav>
             </Navbar.Collapse>
             <Navbar.Brand>
