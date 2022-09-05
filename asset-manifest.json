@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/coderREACT/static/css/main.60898eec.css",
-    "main.js": "/coderREACT/static/js/main.0811acda.js",
+    "main.js": "/coderREACT/static/js/main.5a9fee7d.js",
     "static/js/787.f871b16b.chunk.js": "/coderREACT/static/js/787.f871b16b.chunk.js",
     "index.html": "/coderREACT/index.html",
     "main.60898eec.css.map": "/coderREACT/static/css/main.60898eec.css.map",
-    "main.0811acda.js.map": "/coderREACT/static/js/main.0811acda.js.map",
+    "main.5a9fee7d.js.map": "/coderREACT/static/js/main.5a9fee7d.js.map",
     "787.f871b16b.chunk.js.map": "/coderREACT/static/js/787.f871b16b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.60898eec.css",
-    "static/js/main.0811acda.js"
+    "static/js/main.5a9fee7d.js"
   ]
 }
