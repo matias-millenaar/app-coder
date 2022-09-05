@@ -28,7 +28,7 @@ const ItemDetail = ({id, name, category, price, stock, img, img2, description}) 
             <br/>
             <Card className="text-center">
                 <Card.Header>{category}</Card.Header>
-                <Card.Img variant="top" src={img2} />
+                <Card.Img variant="top" src={`../images/${img2}`} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>
@@ -37,16 +37,16 @@ const ItemDetail = ({id, name, category, price, stock, img, img2, description}) 
                         $ {price}
                     </Card.Text>
                     <Card.Text>
-                        {quantity > 0 ? 
+                        {quantity > 0 ?
                         <>
                             <strong>{quantity} {quantity === 1 ? "producto agregado" : "productos agregados"} con éxito</strong>
                             <br/><br/>
-                            <Link to={"/cart"} className={"btn btn-success"}> Finalizar compra </Link> 
+                            <Link to={"/cart"} className={"btn btn-success"}> Finalizar compra </Link>
                         </>:
-                        <ItemCount 
-                            initial={getProductQuantity(id)} 
+                        <ItemCount
+                            initial={getProductQuantity(id)}
                             product={id}
-                            stock={stock} 
+                            stock={stock}
                             onAdd={handleOnAdd}/>}
                     </Card.Text>
                 </Card.Body>

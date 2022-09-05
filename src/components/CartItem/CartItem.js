@@ -13,7 +13,7 @@ const CartItem = ({product}) => {
                     <div className="d-flex flex-row align-items-center">
                         <div>
                             <img
-                            src={product.img}
+                            src={`../images/${product.img}`}
                             className="img-fluid rounded-3" alt="Shopping item" style={{width: "65px"}} />
                         </div>
                         <div className="ms-3">
@@ -27,7 +27,7 @@ const CartItem = ({product}) => {
                             <h6 className="mb-0">$ {product.price}</h6>
                         </div>
                         <div style={{width: "50px"}}>
-                            <ItemCount 
+                            <ItemCount
                                 cart = {true}
                                 stock = {product.stock}
                                 initial = {product.quantity}
@@ -44,7 +44,7 @@ const CartItem = ({product}) => {
                     </div>
                 </div>
             </Card.Body>
-        </Card>                
+        </Card>
     )
 }
 
