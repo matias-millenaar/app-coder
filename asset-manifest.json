@@ -1,15 +1,16 @@
 {
   "files": {
     "main.css": "/coderREACT/static/css/main.60898eec.css",
-    "main.js": "/coderREACT/static/js/main.5088deb6.js",
+    "main.js": "/coderREACT/static/js/main.03f663af.js",
     "static/js/787.f871b16b.chunk.js": "/coderREACT/static/js/787.f871b16b.chunk.js",
+    "static/media/logo_argenplugs.png": "/coderREACT/static/media/logo_argenplugs.06776de75b712d50a329.png",
     "index.html": "/coderREACT/index.html",
     "main.60898eec.css.map": "/coderREACT/static/css/main.60898eec.css.map",
-    "main.5088deb6.js.map": "/coderREACT/static/js/main.5088deb6.js.map",
+    "main.03f663af.js.map": "/coderREACT/static/js/main.03f663af.js.map",
     "787.f871b16b.chunk.js.map": "/coderREACT/static/js/787.f871b16b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.60898eec.css",
-    "static/js/main.5088deb6.js"
+    "static/js/main.03f663af.js"
   ]
 }
