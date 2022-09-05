@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/coderREACT/static/css/main.60898eec.css",
-    "main.js": "/coderREACT/static/js/main.7a4b8640.js",
+    "main.js": "/coderREACT/static/js/main.a48ff429.js",
     "static/js/787.f871b16b.chunk.js": "/coderREACT/static/js/787.f871b16b.chunk.js",
     "static/media/sustrato.png": "/coderREACT/static/media/sustrato.4a3b55ff0a2218a51d16.png",
     "static/media/sustrato2.jpg": "/coderREACT/static/media/sustrato2.ea1d770976dd8f20fa68.jpg",
@@ -17,11 +17,11 @@
     "static/media/cart_icon.png": "/coderREACT/static/media/cart_icon.326ee490bcc21417e4a8.png",
     "index.html": "/coderREACT/index.html",
     "main.60898eec.css.map": "/coderREACT/static/css/main.60898eec.css.map",
-    "main.7a4b8640.js.map": "/coderREACT/static/js/main.7a4b8640.js.map",
+    "main.a48ff429.js.map": "/coderREACT/static/js/main.a48ff429.js.map",
     "787.f871b16b.chunk.js.map": "/coderREACT/static/js/787.f871b16b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.60898eec.css",
-    "static/js/main.7a4b8640.js"
+    "static/js/main.a48ff429.js"
   ]
 }
