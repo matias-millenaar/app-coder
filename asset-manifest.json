@@ -1,17 +1,27 @@
 {
   "files": {
     "main.css": "/coderREACT/static/css/main.60898eec.css",
-    "main.js": "/coderREACT/static/js/main.ffbac4e2.js",
+    "main.js": "/coderREACT/static/js/main.7a4b8640.js",
     "static/js/787.f871b16b.chunk.js": "/coderREACT/static/js/787.f871b16b.chunk.js",
+    "static/media/sustrato.png": "/coderREACT/static/media/sustrato.4a3b55ff0a2218a51d16.png",
+    "static/media/sustrato2.jpg": "/coderREACT/static/media/sustrato2.ea1d770976dd8f20fa68.jpg",
+    "static/media/begonia.jpg": "/coderREACT/static/media/begonia.949a413ab082ce4fc8cd.jpg",
+    "static/media/alegria.jpg": "/coderREACT/static/media/alegria.b3b2b5f4fc2ed0395426.jpg",
     "static/media/logo_argenplugs.png": "/coderREACT/static/media/logo_argenplugs.06776de75b712d50a329.png",
+    "static/media/begonia2.jpeg": "/coderREACT/static/media/begonia2.f92d6f9b899626445de1.jpeg",
+    "static/media/trash_icon.jpg": "/coderREACT/static/media/trash_icon.3f1ed63b18de4922e622.jpg",
+    "static/media/m12b.jpg": "/coderREACT/static/media/m12b.8124ed284550649caf63.jpg",
+    "static/media/alegria2.jpeg": "/coderREACT/static/media/alegria2.7c72d97889c6492dd736.jpeg",
+    "static/media/m12.jpeg": "/coderREACT/static/media/m12.de900ac2adee0a69a21b.jpeg",
+    "static/media/favicon2.ico": "/coderREACT/static/media/favicon2.0ffb140c70671d8d6fed.ico",
     "static/media/cart_icon.png": "/coderREACT/static/media/cart_icon.326ee490bcc21417e4a8.png",
     "index.html": "/coderREACT/index.html",
     "main.60898eec.css.map": "/coderREACT/static/css/main.60898eec.css.map",
-    "main.ffbac4e2.js.map": "/coderREACT/static/js/main.ffbac4e2.js.map",
+    "main.7a4b8640.js.map": "/coderREACT/static/js/main.7a4b8640.js.map",
     "787.f871b16b.chunk.js.map": "/coderREACT/static/js/787.f871b16b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.60898eec.css",
-    "static/js/main.ffbac4e2.js"
+    "static/js/main.7a4b8640.js"
   ]
 }
